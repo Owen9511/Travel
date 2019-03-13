@@ -5,7 +5,11 @@
         <div class="title border-topbottom">当前城市</div>
         <div class="button-list">
           <div class="button-wrapper">
-            <div class="button">{{this.city}}</div>
+            <div
+              class="button"
+              @click="handleCityClick(city)">
+              {{this.city}}
+            </div>
           </div>
         </div>
       </div>
