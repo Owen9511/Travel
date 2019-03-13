@@ -12,111 +12,25 @@
       <div class="area">
         <div class="title border-topbottom">热门城市</div>
         <div class="button-list">
-          <div class="button-wrapper">
-            <div class="button">北京</div>
-          </div>
-          <div class="button-wrapper">
-            <div class="button">北京</div>
-          </div>
-          <div class="button-wrapper">
-            <div class="button">北京</div>
-          </div>
-          <div class="button-wrapper">
-            <div class="button">北京</div>
-          </div>
-          <div class="button-wrapper">
-            <div class="button">北京</div>
-          </div>
-          <div class="button-wrapper">
-            <div class="button">北京</div>
-          </div>
-          <div class="button-wrapper">
-            <div class="button">北京</div>
+          <div
+            class="button-wrapper"
+            v-for="hotCity of hotCities"
+            :key="hotCity.id">
+            <div class="button">{{hotCity.name}}</div>
           </div>
         </div>
       </div>
-      <div class="area">
-        <div class="title border-topbottom">A</div>
+      <div
+        class="area"
+        v-for="(alphabetCities,alphabet) of cities"
+        :key="alphabet">
+        <div class="title border-topbottom">{{alphabet}}</div>
         <div class="item-list">
-          <div class="item border-bottom">
-            阿拉尔
-          </div>
-          <div class="item border-bottom">
-            阿拉尔
-          </div>
-          <div class="item border-bottom">
-            阿拉尔
-          </div>
-          <div class="item border-bottom">
-            阿拉尔
-          </div>
-        </div>
-      </div>
-      <div class="area">
-        <div class="title border-topbottom">A</div>
-        <div class="item-list">
-          <div class="item border-bottom">
-            阿拉尔
-          </div>
-          <div class="item border-bottom">
-            阿拉尔
-          </div>
-          <div class="item border-bottom">
-            阿拉尔
-          </div>
-          <div class="item border-bottom">
-            阿拉尔
-          </div>
-        </div>
-      </div>
-      <div class="area">
-        <div class="title border-topbottom">A</div>
-        <div class="item-list">
-          <div class="item border-bottom">
-            阿拉尔
-          </div>
-          <div class="item border-bottom">
-            阿拉尔
-          </div>
-          <div class="item border-bottom">
-            阿拉尔
-          </div>
-          <div class="item border-bottom">
-            阿拉尔
-          </div>
-        </div>
-      </div>
-      <div class="area">
-        <div class="title border-topbottom">A</div>
-        <div class="item-list">
-          <div class="item border-bottom">
-            阿拉尔
-          </div>
-          <div class="item border-bottom">
-            阿拉尔
-          </div>
-          <div class="item border-bottom">
-            阿拉尔
-          </div>
-          <div class="item border-bottom">
-            阿拉尔
-          </div>
-        </div>
-      </div>
-      <div class="area">
-        <div class="title border-topbottom">A</div>
-        <div class="item-list">
-          <div class="item border-bottom">
-            阿拉尔
-          </div>
-          <div class="item border-bottom">
-            阿拉尔
-          </div>
-          <div class="item border-bottom">
-            阿拉尔
-          </div>
-          <div class="item border-bottom">
-            阿拉尔
+          <div
+            class="item border-bottom"
+            v-for="city of alphabetCities"
+            :key="city.id">
+            {{city.name}}
           </div>
         </div>
       </div>
@@ -130,6 +44,10 @@ export default {
   name: 'CityList',
   mounted () {
     this.scroll = new BScroll(this.$refs.wrapper, {})
+  },
+  props: {
+    cities: Object,
+    hotCities: Array
   }
 }
 </script>
