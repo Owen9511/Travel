@@ -26,13 +26,19 @@ export default {
   mounted () {
     this.getDetailInfo()
   },
+  activated () {
+    if (this.lastId && this.$route.params.id !== this.lastId) {
+      this.getDetailInfo()
+    }
+  },
   data () {
     return {
       sightName: '',
       bannerImg: '',
       gallaryImgs: [],
       list: [],
-      bannerInfo: {}
+      bannerInfo: {},
+      lastId: ''
     }
   },
   methods: {
@@ -44,6 +50,7 @@ export default {
       }).then(this.handleGetDataSucc)
     },
     handleGetDataSucc (res) {
+      this.lastId = this.$route.params.id
       res = res.data
       if (res.ret && res.data) {
         const data = res.data
