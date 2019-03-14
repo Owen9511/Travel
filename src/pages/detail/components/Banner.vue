@@ -14,19 +14,23 @@
         </div>
       </div>
     </div>
-    <common-gallery
-      :imgs="gallaryImgs"
-      v-if="showGallary"
-      @close="closeGallary"/>
+    <fade-animation>
+      <common-gallery
+        :imgs="gallaryImgs"
+        v-if="showGallary"
+        @close="closeGallary"/>
+    </fade-animation>
   </div>
 </template>
 
 <script>
 import CommonGallery from 'common/gallary/Gallary'
+import FadeAnimation from 'common/fade/Fade'
 export default {
   name: 'Detail',
   components: {
-    CommonGallery
+    CommonGallery,
+    FadeAnimation
   },
   props: {
     sightName: String,
